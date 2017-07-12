@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Council Tax per head</title>
+ 
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map-canvas {
+        height: 500px;
+	width: 500px;
+	float: left;
+      }
+ #controls {
+        height: 500px;
+	width: 100px
+	float: left;
+	 padding:10px;
+      }
+	    
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    
+    <script>    
+	    
+	    var layer;
+	    var tableid;
+	    var querystring;
+	    
+	    
+	    function mapRefresh() {
+  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+    center: {
+      lat: 52.2397355,
+      lng: -3.392428
+    },
+    zoom: 8
+  });
+  // console.log('Hello world!');
+  
+  layer = new google.maps.FusionTablesLayer({
+      query: {
+        select: 'Geometry',
+        from: tableid,
+        where: querystring
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    }),
+ layer.setMap(map);
+
+		    		    
+}
+    function mapHide() {
+  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+    center: {
+      lat: 52.2397355,
+      lng: -3.392428
+    },
+    zoom: 8
+  });
+  // console.log('Hello world!');
+  var layer;
+  var tableid = '1E0ENRSUkCtzrMWeHuVUdgIcOD4-yaWcHyPBGf_u-';
+  var querystring = " col2>>0 >= '2008 Jan 1' and col2>>0 <= '2009 Jan 1'";
+  layer = new google.maps.FusionTablesLayer({
+      query: {
+        select: 'Geometry',
+        from: tableid,
+        where: querystring
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    }),
+ layer.setMap(null);
+
+		    		    
+}	    
+function evaluateMapState(){
+if (document.getElementById("20089").checked)
+{	    
+
+  tableid = '1E0ENRSUkCtzrMWeHuVUdgIcOD4-yaWcHyPBGf_u-';
+  querystring = "col2\x3e\x3e0 \x3e\x3d \x272008 Jan 1\x27 and col2\x3e\x3e0 \x3c\x3d \x272009 Jan 1\x27";
+	mapRefresh();		 
+	
+		    }
+if (document.getElementById("200910").checked){
+	
+tableid = '1E0ENRSUkCtzrMWeHuVUdgIcOD4-yaWcHyPBGf_u-';
+querystring = " col2>>0 >= '2009 Apr 1' and col2>>0 <= '2010 Mar 31'";
+	mapRefresh();
+	
+}
+if (document.getElementById("201011").checked){
+	
+tableid = '1E0ENRSUkCtzrMWeHuVUdgIcOD4-yaWcHyPBGf_u-';
+querystring = " col2>>0 >= '2010 Apr 1' and col2>>0 <= '2011 Mar 31'";
+	mapRefresh();
+	
+}
+if (document.getElementById("201112").checked){
+	
+tableid = '1E0ENRSUkCtzrMWeHuVUdgIcOD4-yaWcHyPBGf_u-';
+querystring = " col2>>0 >= '2011 Apr 1' and col2>>0 <= '2012 Mar 31'";
+	mapRefresh();
+	
+}
+if (document.getElementById("201213").checked){
+	
+tableid = '1E0ENRSUkCtzrMWeHuVUdgIcOD4-yaWcHyPBGf_u-';
+querystring = " col2>>0 >= '2012 Apr 1' and col2>>0 <= '2013 Mar 31'";
+	mapRefresh();
+	
+}
+if (document.getElementById("201314").checked){
+	
+tableid = '1E0ENRSUkCtzrMWeHuVUdgIcOD4-yaWcHyPBGf_u-';
+querystring = " col2>>0 >= '2013 Apr 1' and col2>>0 <= '2014 Mar 31'";
+	mapRefresh();
+	
+}
+
+}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQzcUq5Pfafx-DrIP6m063PDGtywrtbpA&callback=initMap">
+    </script>
+  </head>
+  <body>
+
+<div style="align:right;width:500px;height:500px;" id="map-canvas"></div>
+    <div id="controls">
+	    <h1> Select the financial year</h1>
+    <form action="">
+	    <input id="20089" type="radio" name="option" >2008/9<br>
+<input id="200910" type="radio" name="option" >2009/10<br>
+<input id="201011" type="radio" name="option" >2010/11<br>
+<input id="201112" type="radio" name="option" >2011/12<br>
+<input id="201213" type="radio" name="option" >2012/13<br>
+<input id="201314" type="radio" name="option" >2013/14<br>
+</form>
+	    <button onclick="evaluateMapState()">Update map</button>
+	    <h1>Legend</h1>
+	    <h2>Council Tax Income per head of population</h2>
+	    <table>
+		    <tr><td style="background-color:#ff0000">&nbsp;&nbsp;&nbsp;</td><td>£285 - £361</td></tr> 
+		    <tr><td style="background-color:#ff9900">&nbsp;&nbsp;&nbsp;</td><td>£361 - £437</td></tr>
+		     <tr><td style="background-color:#ffff00">&nbsp;&nbsp;&nbsp;</td><td>£437 - £513</td></tr>
+		     <tr><td style="background-color:#00ff00">&nbsp;&nbsp;&nbsp;</td><td>£513 - £589</td></tr>
+		     <tr><td style="background-color:#00ffff">&nbsp;&nbsp;&nbsp;</td><td>£589 - £665</td></tr>
+	    </table>
+	    
+	    
+	    
+	    
+	    
+	    
+    
+    </div>
+  </body>
+</html>
