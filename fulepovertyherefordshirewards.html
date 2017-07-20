@@ -1,0 +1,739 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>% of households in fule poverty by ward in Herefordshire</title>
+</head>
+
+<body>
+
+<style>
+    
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#container {
+   min-height:100%;
+   position:relative;
+}
+#header {
+   padding:10px;
+}
+
+   
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;   /* Height of the footer */
+  }
+    body {
+        font-family: sans-serif;
+        text-align: center;
+    }
+    #footer-box {
+        display:inline-block;
+        width: 80%;
+    }    
+    #hexagonMapHolder {
+        font-size: 0.8em;
+        display: inline-block;
+        text-align: center;
+        width: 800px;
+        vertical-align: top;
+        padding-top: 1em;
+        padding:10px;
+   padding-bottom:120px;   /* Height of the footer */
+}
+    }
+    
+    select {
+        margin: 1em auto 2em auto;
+    }
+    
+    .hex {
+        float: left;
+        margin-left: 3px;
+        margin-bottom: -26px;
+    }
+    
+    .hex .top {
+        width: 0;
+        border-bottom: 30px solid lightgray;
+        border-left: 52px solid transparent;
+        border-right: 52px solid transparent;
+        transition: all 1s;
+    }
+    
+    .hex .middle {
+        width: 104px;
+        height: 60px;
+        background: lightgray;
+        transition: all 1s;
+    }
+    
+    .hex .bottom {
+        width: 0;
+        border-top: 30px solid lightgray;
+        border-left: 52px solid transparent;
+        border-right: 52px solid transparent;
+        transition: all 1s;
+    }
+    
+    .hex-row {
+        clear: left;
+    }
+    
+    .hex-row.even {
+        margin-left: 53px;
+    }
+    
+    .hex .middleBlank {
+        width: 104px;
+        height: 60px;
+        background: transparent;
+    }
+    
+    .hex .topBlank {
+        width: 0;
+        border-bottom: 30px solid transparent;
+        border-left: 52px solid transparent;
+        border-right: 52px solid transparent;
+    }
+    
+    .hex .bottomBlank {
+        width: 0;
+        border-top: 30px solid transparent;
+        border-left: 52px solid transparent;
+        border-right: 52px solid transparent;
+    }
+    
+    .wardName {
+        padding: 2px;
+    }
+    
+    .wardValue {
+        padding: 2px;
+        font-size: 1.3em;
+    }
+    
+    #LEEDS {
+        font-weight: bold;
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+    }
+</style>
+
+
+<body onload="update()">
+    <div id="container">
+    <div id="header">
+    <h1>% households in each ward in fule poverty</h1>
+    <p>Figures are % of all households</p>
+    <div>
+        <label for="size">Which year would you like to view?</label>
+        <select id="size" onchange="update()">
+            <option id="one">2015</option>
+            <option id="two">2014</option>
+            <option id="three">2013</option>
+        </select>
+    </div>
+        </div>
+        
+    <div id="hexagonMapHolder">
+<div id="hexagonMap">
+          <div class="hex-row even">  
+                <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                <div id="Mortimer" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Mortimer</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                </div>
+<div class="hex-row">
+
+                  <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                    <div id="Arrow" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Arrow</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                    <div id="Bircher" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Bircher</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                    <div id="Leominster_North_and_Rural" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Leominster North</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+     
+    </div>
+    <div class="hex-row even">
+   
+                 <div id="Kington" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Kington</div>
+                        <div class="wardValue"></div>
+                    </div>
+                      <div class="bottom"></div>
+        </div>
+                <div id="Castle" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Castle</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                    <div class="bottom"></div>
+                <div id="Leominster_West" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Leominster West</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+            
+                <div id="Leominster_East" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Leominster East</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Hampton" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Hampton</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Bromyard_Bringsty" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Bromyard Bringsty</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+        </div>
+    <div class="hex-row">
+                <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                <div id="Weobley" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Weobley</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+               <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+               <div id="Leominster_South" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Leominster South</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                            <div id="Bromyard_West" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Bromyard West</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Bishops_Frome_and_Cradley" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Bishops Frome and Cradley</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+            </div>
+        <div class="hex-row even">
+                <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+
+                <div id="Queenswood" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Queenswood</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Sutton_Walls" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Sutton Walls</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Three_Crosses" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Three Crosses</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                           
+            </div>
+            <div class="hex-row">
+                <div id="Credenhill" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Credenhill</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+     <div id="Kings_Acre" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Kings Acre</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Bobblestock" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Bobblestock</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+     <div id="Holmer" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Holmer</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                
+
+                <div id="Hagley" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Hagley</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+
+                <div id="Hope_End" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Hope End</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+            </div>
+            <div class="hex-row even">
+
+               
+<div id="Whitecross" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Whitecross</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Widemarsh" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Widemarsh</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="College" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">College</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Aylestone_Hill" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Aylestone</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                                    <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+  
+
+                </div>
+                <div id="Ledbury_North" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Ledbury North</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                 </div>
+    <div class="hex-row">
+        
+
+                <div id="Greyfriars" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Greyfriars</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Central" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Central</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Eign_Hill" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Eign Hill</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                    <div id="Tupsley" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Tupsley</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                    <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                <div id="Ledbury_West" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Ledbury West</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+    </div>
+                  
+    <div class="hex-row even">
+        <div id="Golden_Valley_North" class="ward hex">                
+        <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Golden Valley North</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+
+
+
+                                <div id="Belmont_Rural" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Belmont Rural</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                     <div id="Newton_Farm" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Newton Farm</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                                        <div id="Hinton_and_Hunderton" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Hinton and Hunderton</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                        <div id="Red_Hill" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Red Hill</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+
+
+              <div id="Ledbury_South" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Ledbury South</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+
+        </div>
+ 
+        <div class="hex-row">
+                     <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                       <div id="Stoney_Street" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Stoney Street</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+
+                
+
+
+   
+
+                <div id="Saxon_Gate" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Saxon Gate</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                                        <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                                    <div id="Backbury" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Backbury</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+        </div>
+            <div class="hex-row even">
+
+                <div id="Golden_Valley_South" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Golden Valley South</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Wormside" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Wormside</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+
+
+                <div id="Dinedor_Hill" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Dinedor Hill</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Old_Gore" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Old Gore</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+        </div>
+         <div class="hex-row">
+        
+
+                    <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>   
+             <div id="Birch" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Birch</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Llangarron" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Llangarron</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                    
+                <div id="Ross_North" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Ross North</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Penyard" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Penyard</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+        </div>
+        <div class="hex-row even">
+        
+ 
+                    <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>   
+                    <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>  
+             <div id="Kerne_Bridge" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Kerne Bridge</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+             <div id="Ross_West" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Ross West</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Ross_East" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Ross East</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+        </div>
+
+        </div>
+    
+    
+    
+    <div id="footer">A project from <a href="http://cardiff.theodi.org">ODI-Cardiff</a> and <a href="http://www.bulmerfoundation.org.uk/">BrightSpace Foundation</a> as part of the #data4good partnership in Herefordshire. Based on <a href="https://github.com/thomasforth/leedssimplifiedwardmap">code published by Thomas Forth from ODI-Leeds</a>. </div>
+</div>
+        </body>
+
+
+<script>
+    var wardArray = ['Arrow','Aylestone_Hill','Backbury','Belmont_Rural','Birch','Bircher','Bishops_Frome_and_Cradley','Bobblestock','Bromyard_Bringsty','Bromyard_West','Castle','Central','College','Credenhill','Dinedor_Hill','Eign_Hill','Golden_Valley_North','Golden_Valley_South','Greyfriars','Hagley','Hampton','Hinton_and_Hunderton','Holmer','Hope_End','Kerne_Bridge','Kings_Acre','Kington','Ledbury_North','Ledbury_South','Ledbury_West','Leominster_East','Leominster_North_and_Rural','Leominster_South','Leominster_West','Llangarron','Mortimer','Newton_Farm','Old_Gore','Penyard','Queenswood','Red_Hill','Ross_East','Ross_North','Ross_West','Saxon_Gate','Stoney_Street','Sutton_Walls','Three_Crosses','Tupsley','Weobley','Whitecross','Widemarsh','Wormside'];
+
+    var oneBedA = [14,9,16,5,10,20,24,21,28,12,34,21,14,12,16,19,25,29,25,11,24,16,10,15,12,10,7,24,17,28,15,17,10,22,13,16,13,12,12,14,18,12,10,10,22,24,16,27,29,23,25,11,8];
+    var twoBedA = [13,8,14,3,8,18,23,19,26,10,32,19,12,10,15,18,23,27,23,10,22,15,9,13,10,9,6,22,16,27,14,15,9,20,11,15,11,10,10,12,16,10,8,9,20,23,14,25,28,21,24,10,6,14,15,9,20,11,15,11,10,10,12,16,10,8,9,20,23,14,25,28,21,24,10,6];
+    var threeBedA = [13,9,14,5,10,16,18,14,19,11,23,18,14,11,12,17,18,24,18,11,20,15,10,14,11,11,8,19,17,19,13,15,10,16,12,15,12,11,12,13,16,12,10,10,19,16,15,18,20,18,20,11,8];
+
+    var bedsArray = [oneBedA, twoBedA, threeBedA];
+
+    function update() {
+        var sizeIndex = size.selectedIndex;
+        var resultsArray = bedsArray[sizeIndex];
+
+        for (var n = 0; n < wardArray.length; n++) {
+            var wardname = wardArray[n];
+            var colorShade = resultsArray[n] / 100;
+            document.getElementById(wardname).children[0].style.borderBottom = "30px solid rgba(108,204,226, " + colorShade + ")";
+            document.getElementById(wardname).children[1].style.background = "rgba(108,204,226, " + colorShade + ")";
+            document.getElementById(wardname).children[2].style.borderTop = "30px solid rgba(108,204,226, " + colorShade + ")";
+            document.getElementById(wardname).children[1].children[1].innerHTML = resultsArray[n] + " ";
+        }
+    }
+
+</script>
+
+    
+
+</html>
