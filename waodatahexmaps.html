@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>% of households in fuel poverty by ward in Herefordshire</title>
+<title>Total amount of reserves local authorities in Wales</title>
 </head>
 
 <body>
@@ -131,8 +131,8 @@ body {
 <body onload="update()">
     <div id="container">
     <div id="header">
-    <h1>% households in each ward in fule poverty</h1>
-    <p>Figures are % of all households</p>
+    <h1>Total amount of reserves in financial year</h1>
+    <p>£millions</p>
     <div>
         <label for="size">Which year would you like to view?</label>
         <select id="size" onchange="update()">
@@ -255,7 +255,7 @@ body {
                     </div>
                     <div class="bottom"></div>
                 </div>
-                <div id="Sir_Gaerfyrddin " class="ward hex">
+                <div id="Sir_Gaerfyrddin" class="ward hex">
                     <div class="top"></div>
                     <div class="middle">
                         <div class="wardName">Sir Gaerfyrddin - Carmarthenshire</div>
@@ -280,7 +280,7 @@ body {
                     </div>
                     <div class="bottom"></div>
                 </div>
-                <div id="Castell_nedd_Port_Talbot " class="ward hex">
+                <div id="Castell_nedd_Port_Talbot" class="ward hex">
                     <div class="top"></div>
                     <div class="middle">
                         <div class="wardName">Castell-nedd Port Talbot - Neath Port Talbot</div>
@@ -427,11 +427,11 @@ body {
 
 
 <script>
-    var wardArray = ['Arrow','Aylestone_Hill','Backbury','Belmont_Rural','Birch','Bircher','Bishops_Frome_and_Cradley','Bobblestock','Bromyard_Bringsty','Bromyard_West','Castle','Central','College','Credenhill','Dinedor_Hill','Eign_Hill','Golden_Valley_North','Golden_Valley_South','Greyfriars','Hagley','Hampton','Hinton_and_Hunderton','Holmer','Hope_End','Kerne_Bridge','Kings_Acre','Kington','Ledbury_North','Ledbury_South','Ledbury_West','Leominster_East','Leominster_North_and_Rural','Leominster_South','Leominster_West','Llangarron','Mortimer','Newton_Farm','Old_Gore','Penyard','Queenswood','Red_Hill','Ross_East','Ross_North','Ross_West','Saxon_Gate','Stoney_Street','Sutton_Walls','Three_Crosses','Tupsley','Weobley','Whitecross','Widemarsh','Wormside'];
+    var wardArray = ['Abertawe','Blaenau_Gwent','Bro_Morgannwg','Caerdydd','Caerffili','Castell_nedd_Port_Talbot','Ceredigion','Conwy','Dinas_Casnewydd','Gwynedd','Merthyr_Tudful','Pen_y_bont_ar_Ogwr','Powys','Rhondda_Cynon_Taf','Sir_Fynwy','Sir_Gaerfyrddin','Sir_Penfro','Sir_y_Ddinbych','Sir_y_Fflint','Torfaen','Wrecsam','Ynys_Mon'];
 
-    var oneBedA = [21,11,16,5,28,22,20,8,28,12,34,21,14,12,15,16,25,29,17,11,24,14,10,17,24,10,19,13,11,5,16,19,15,9,27,30,13,27,20,17,11,11,8,12,13,14,12,27,9,29,12,14,24];
-    var twoBedA = [20,10,14,3,26,20,18,6,26,10,32,19,12,10,13,14,23,27,16,10,22,13,9,15,23,9,17,11,9,3,14,18,14,7,25,28,11,25,19,16,10,10,7,11,12,13,10,25,8,27,10,13,22];
-    var threeBedA = [19,11,14,5,20,17,15,9,19,11,23,18,14,11,11,15,18,24,16,11,20,14,10,16,16,9,17,12,10,5,15,17,15,8,17,21,12,16,15,14,11,11,9,12,13,13,12,18,9,21,11,14,18];
+    var oneBedA = [129.674,-39.782,249.988,1115.949,474.235,442.357,102.043,25.546,151.938,182.579,-3.781,42.083,159.89,1.086,78.267,707.924,605.016,196.246,612.808,77.737,351.83,96.881];
+    var twoBedA = [129.674,-39.782,249.988,1115.949,474.235,442.357,102.043,25.546,151.938,182.579,-3.781,42.083,159.89,1.086,78.267,707.924,605.016,196.246,612.808,77.737,351.83,96.881];
+    var threeBedA = [129.674,-39.782,249.988,1115.949,474.235,442.357,102.043,25.546,151.938,182.579,-3.781,42.083,159.89,1.086,78.267,707.924,605.016,196.246,612.808,77.737,351.83,96.881];
 
     var bedsArray = [oneBedA, twoBedA, threeBedA];
 
