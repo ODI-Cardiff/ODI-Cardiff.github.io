@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Total gross expenditure local authorities in Wales</title>
-</head>
+ <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    </head>
 
 <body>
 
@@ -25,9 +28,9 @@ body {
 
    
 #footer {
-   position:absolute;
+   position:right;
    bottom:0;
-   width:100%;
+   width:20%%;
    height:60px;   /* Height of the footer */
   }
     body {
@@ -42,7 +45,8 @@ body {
         font-size: 0.8em;
         display: inline-block;
         text-align: center;
-        width: 800px;
+        width: 80%;
+ 
         vertical-align: top;
         padding-top: 1em;
         padding:10px;
@@ -135,8 +139,9 @@ body {
     <p>£millions</p>
     <div>
         <label for="size">Which year would you like to view?</label>
+
         <select id="size" onchange="update()">
-            <option id="one">2008/9</option>
+             <option id="one">2008/9</option>
             <option id="two">2009/10</option>
             <option id="three">2010/11</option>
             <option id="four">2011/12</option>
@@ -144,7 +149,10 @@ body {
             <option id="six">2013/14</option>
             <option id="seven">2014/15</option>
             <option id="eight">2015/16</option>
-        </select>
+         </select>
+
+
+
     </div>
         </div>
         
@@ -439,6 +447,10 @@ body {
     
     <div id="footer"><img align="left" src="https://ODI-Cardiff.github.io/20140513node-300-S-K lb sm.png">A project from <a href="http://cardiff.theodi.org">ODI-Cardiff</a>. <a href="https://goodpracticeexchange.wales/2017/06/20/releasing-open-data/">Data published by Wales Audit Office under the Open Government Licence</a>. Based on <a href="https://github.com/thomasforth/leedssimplifiedwardmap">code published by Thomas Forth from ODI-Leeds</a>. </div>
 </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
         </body>
 
 
