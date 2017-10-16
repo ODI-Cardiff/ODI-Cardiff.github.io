@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+    #map-canvas { width:500px; height:400px; }
+    .layer-wizard-search-label { font-family: sans-serif };
+  </style>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQzcUq5Pfafx-DrIP6m063PDGtywrtbpA&callback=initialize">
+    </script>
+  <script type="text/javascript"
+    src="http://maps.google.com/maps/api/js?sensor=false">
+  </script>
+  <script type="text/javascript">
+    var map;
+    var layer_0;
+    var layer_1;
+    function initialize() {
+      map = new google.maps.Map(document.getElementById('map-canvas'), {
+        center: new google.maps.LatLng(53.10408625551564, -2.8862070046875488),
+        zoom: 9
+      });
+      var style = [
+        {
+          featureType: 'all',
+          elementType: 'all',
+          stylers: [
+            { saturation: 3 }
+          ]
+        }
+      ];
+      var styledMapType = new google.maps.StyledMapType(style, {
+        map: map,
+        name: 'Styled Map'
+      });
+      map.mapTypes.set('map-style', styledMapType);
+      map.setMapTypeId('map-style');
+      layer_0 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col6",
+          from: "1JWJxvoM5Xc2f20yNWCMsZe2rvPZUZevhhewnUvcB",
+          where: " col5 = 'govtbldgs'"
+        },
+        map: map,
+        styleId: 3,
+        templateId: 3
+      });
+      layer_1 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col6",
+          from: "1JWJxvoM5Xc2f20yNWCMsZe2rvPZUZevhhewnUvcB",
+          where: " col5 in ('a', 'a_blue', 'b', 'b_blue', 'c', 'c_blue', 'd', 'd_blue', 'e', 'e_blue', 'f', 'f_blue', 'g', 'g_blue', 'h', 'h_blue', 'i', 'i_blue', 'j', 'j_blue', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z')"
+        },
+        map: map,
+        styleId: 2,
+        templateId: 2
+      });
+    }
+    function changeMap_1() {
+      var whereClause = " col5 in ('a', 'a_blue', 'b', 'b_blue', 'c', 'c_blue', 'd', 'd_blue', 'e', 'e_blue', 'f', 'f_blue', 'g', 'g_blue', 'h', 'h_blue', 'i', 'i_blue', 'j', 'j_blue', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z')";
+      var searchString = document.getElementById('search-string_1').value.replace(/'/g, "\\'");
+      if (searchString != '--Select--') {
+        whereClause += " AND 'Destination time' = '" + searchString + "'";
+      }
+      layer_1.setOptions({
+        query: {
+          select: "col6",
+          from: "1JWJxvoM5Xc2f20yNWCMsZe2rvPZUZevhhewnUvcB",
+          where: whereClause
+        }
+      });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+    <div style="margin-top: 10px;">
+      <label class="layer-wizard-search-label">
+        Time
+        <select id="search-string_1" onchange="changeMap_1(this.value);">
+          <option value="--Select--">--Select--</option>
+          <option value="07:12">07:12</option>
+          <option value="07:24">07:24</option>
+          <option value="07:26">07:26</option>
+          <option value="07:29">07:29</option>
+          <option value="07:37">07:37</option>
+          <option value="07:41">07:41</option>
+          <option value="07:46">07:46</option>
+          <option value="07:48">07:48</option>
+          <option value="08:00">08:00</option>
+          <option value="08:10">08:10</option>
+          <option value="08:23">08:23</option>
+          <option value="08:26">08:26</option>
+          <option value="09:05">09:05</option>
+          <option value="09:06">09:06</option>
+          <option value="09:33">09:33</option>
+          <option value="09:40">09:40</option>
+          <option value="09:41">09:41</option>
+          <option value="10:06">10:06</option>
+          <option value="10:07">10:07</option>
+          <option value="10:08">10:08</option>
+          <option value="10:09">10:09</option>
+          <option value="10:11">10:11</option>
+          <option value="10:12">10:12</option>
+          <option value="10:13">10:13</option>
+          <option value="10:19">10:19</option>
+          <option value="10:20">10:20</option>
+          <option value="10:24">10:24</option>
+          <option value="10:26">10:26</option>
+          <option value="10:28">10:28</option>
+          <option value="10:37">10:37</option>
+          <option value="10:44">10:44</option>
+          <option value="10:47">10:47</option>
+          <option value="10:52">10:52</option>
+          <option value="10:59">10:59</option>
+          <option value="11:03">11:03</option>
+          <option value="11:07">11:07</option>
+          <option value="11:08">11:08</option>
+          <option value="11:09">11:09</option>
+          <option value="11:10">11:10</option>
+          <option value="11:15">11:15</option>
+          <option value="11:16">11:16</option>
+          <option value="11:20">11:20</option>
+          <option value="11:21">11:21</option>
+          <option value="11:23">11:23</option>
+          <option value="11:24">11:24</option>
+          <option value="11:27">11:27</option>
+          <option value="11:29">11:29</option>
+          <option value="11:36">11:36</option>
+          <option value="11:38">11:38</option>
+          <option value="11:39">11:39</option>
+          <option value="11:42">11:42</option>
+          <option value="11:43">11:43</option>
+          <option value="11:50">11:50</option>
+          <option value="11:51">11:51</option>
+          <option value="11:53">11:53</option>
+          <option value="11:56">11:56</option>
+          <option value="12:03">12:03</option>
+          <option value="12:05">12:05</option>
+          <option value="12:12">12:12</option>
+          <option value="12:13">12:13</option>
+          <option value="12:15">12:15</option>
+          <option value="12:18">12:18</option>
+          <option value="12:22">12:22</option>
+          <option value="12:25">12:25</option>
+          <option value="12:30">12:30</option>
+          <option value="12:33">12:33</option>
+          <option value="12:34">12:34</option>
+          <option value="12:37">12:37</option>
+          <option value="12:39">12:39</option>
+          <option value="12:43">12:43</option>
+          <option value="12:45">12:45</option>
+          <option value="12:47">12:47</option>
+          <option value="12:49">12:49</option>
+          <option value="12:51">12:51</option>
+          <option value="12:52">12:52</option>
+          <option value="12:55">12:55</option>
+          <option value="13:00">13:00</option>
+          <option value="13:07">13:07</option>
+          <option value="13:08">13:08</option>
+          <option value="13:09">13:09</option>
+          <option value="13:10">13:10</option>
+          <option value="13:16">13:16</option>
+          <option value="13:21">13:21</option>
+          <option value="13:24">13:24</option>
+          <option value="13:25">13:25</option>
+          <option value="13:27">13:27</option>
+          <option value="13:30">13:30</option>
+          <option value="13:32">13:32</option>
+          <option value="13:39">13:39</option>
+          <option value="13:40">13:40</option>
+          <option value="13:41">13:41</option>
+          <option value="13:43">13:43</option>
+          <option value="13:45">13:45</option>
+          <option value="13:46">13:46</option>
+          <option value="13:54">13:54</option>
+          <option value="13:55">13:55</option>
+          <option value="13:56">13:56</option>
+          <option value="14:05">14:05</option>
+          <option value="14:06">14:06</option>
+          <option value="14:08">14:08</option>
+          <option value="14:11">14:11</option>
+          <option value="14:13">14:13</option>
+          <option value="14:15">14:15</option>
+          <option value="14:19">14:19</option>
+          <option value="14:23">14:23</option>
+          <option value="14:24">14:24</option>
+          <option value="14:27">14:27</option>
+          <option value="14:29">14:29</option>
+          <option value="14:32">14:32</option>
+          <option value="14:35">14:35</option>
+          <option value="14:39">14:39</option>
+          <option value="14:42">14:42</option>
+          <option value="14:43">14:43</option>
+          <option value="14:47">14:47</option>
+          <option value="14:48">14:48</option>
+          <option value="14:49">14:49</option>
+          <option value="14:52">14:52</option>
+          <option value="14:59">14:59</option>
+          <option value="15:03">15:03</option>
+          <option value="15:04">15:04</option>
+          <option value="15:05">15:05</option>
+          <option value="15:09">15:09</option>
+          <option value="15:10">15:10</option>
+          <option value="15:11">15:11</option>
+          <option value="15:13">15:13</option>
+          <option value="15:21">15:21</option>
+          <option value="15:24">15:24</option>
+          <option value="15:26">15:26</option>
+          <option value="15:27">15:27</option>
+          <option value="15:28">15:28</option>
+          <option value="15:30">15:30</option>
+          <option value="15:34">15:34</option>
+          <option value="15:38">15:38</option>
+          <option value="15:42">15:42</option>
+          <option value="15:47">15:47</option>
+          <option value="15:50">15:50</option>
+          <option value="15:51">15:51</option>
+          <option value="16:07">16:07</option>
+          <option value="16:12">16:12</option>
+          <option value="16:14">16:14</option>
+          <option value="16:42">16:42</option>
+          <option value="16:56">16:56</option>
+          <option value="17:07">17:07</option>
+          <option value="17:18">17:18</option>
+          <option value="17:19">17:19</option>
+          <option value="17:28">17:28</option>
+          <option value="17:30">17:30</option>
+          <option value="17:31">17:31</option>
+          <option value="17:37">17:37</option>
+          <option value="17:39">17:39</option>
+          <option value="17:43">17:43</option>
+          <option value="17:50">17:50</option>
+          <option value="17:58">17:58</option>
+          <option value="18:01">18:01</option>
+          <option value="18:07">18:07</option>
+          <option value="18:10">18:10</option>
+          <option value="18:20">18:20</option>
+          <option value="18:31">18:31</option>
+          <option value="18:35">18:35</option>
+          <option value="18:48">18:48</option>
+          <option value="18:49">18:49</option>
+          <option value="18:56">18:56</option>
+          <option value="21:18">21:18</option>
+          <option value="23:01">23:01</option>
+        </select>
+      </label> 
+    </div>
+    <div class="text-canvas">This shows WAST journeys (map pins like this <img src="http://labs.google.com/ridefinder/images/mm_20_red.png" alt="Pin">) and day centres (buildings like this <img src="http://maps.google.com/mapfiles/kml/shapes/govtbldgs.png" alt="building">). You can look at a particular time to see where pick-ups were made at that time. Click on the map pin to get more info about the vehicle and route. To put all the pins bak on the map, chose "--Select--" in the menu above.</div>
+      <a href="index.html">Go back to the Y-Lab project index page.</a>
+  </body>
+</html>
