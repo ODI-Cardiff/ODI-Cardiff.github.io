@@ -1,4 +1,6 @@
+/*jslint browser:true */
 function addr_search() {
+    "use strict";
     var inp = document.getElementById("addr");
 
     $.getJSON('https://nominatim.openstreetmap.org/search?format=json&limit=5&countrycodes=GB&namedetails=1&q=' + inp.value, function(data) {
@@ -10,7 +12,7 @@ function addr_search() {
         $.each(data, function(key, val) {
             lat = val.lat;
             lon = val.lon;
-            cymraeg = val['namedetails']['name:cy'];
+            cymraeg = val["namedetails"]["name:cy"];
             place_type = val.type;
           if (place_type === "country" || place_type === "continent" || place_type === "archipelago"){
               zoom = 7;
