@@ -36,7 +36,7 @@ function addr_search() {
                 zoom = 12;
             }
 
-            items.push("<li><a target=”_blank” href=https://openstreetmap.cymru/?h=" + lat + "&ll=" + lon + "&ch=" + zoom + ">" + cymraeg + "  ...  " + val.display_name + "  ...  " + val.osm_type + "</a>  </li>");
+            items.push("<li> Welsh name: " + cymraeg + "<br>English name: " + val.display_name + "<br> This is a: " + val.osm_type + "<br><a target=”_blank” href=https://openstreetmap.cymru/?h=" + lat + "&ll=" + lon + "&ch=" + zoom + "> View this on openstreetmap.cymru</a>  </li>");
 
         });
 
