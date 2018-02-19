@@ -5,38 +5,60 @@ function addr_search() {
 
     $.getJSON('https://nominatim.openstreetmap.org/search?format=json&limit=5&countrycodes=GB&namedetails=1&q=' + inp.value, function(data) {
         var items = [];
+        var bounding_box = [];
         var cymraeg;
         var zoom;
-        var place_type;
 
+
+        
+        
         $.each(data, function (key, val) {
             lat = val.lat;
             lon = val.lon;
             cymraeg = val["namedetails"]["name:cy"];
-            place_type = val.type;
-                        if (place_type === "country" || place_type === "continent" || place_type === "archipelago") {
-                zoom = 7;
-            } else if (place_type === "state" || place_type === "region") {
-                zoom = 8;
-            } else if (place_type === "province" || place_type === "district" || place_type === "county" || place_type === "island") {
-                zoom = 9;
-            } else if (place_type === "municipality" || place_type === "islet") {
-                zoom = 12;
-            } else if (place_type === "city") {
-                zoom = 13;
-            } else if (place_type === "town" || place_type === "borough") {
-                zoom = 14;
-            } else if (place_type === "suburb" || place_type === "village" || place_type === "hamlet") {
-                zoom = 15;
-            } else if (place_type === "quarter" || place_type === "neighbourhood" || place_type === "city_block" || place_type === "allotments" || place_type === "square" || place_type === "locality") {
-                zoom = 16;
-            } else if (place_type === "farm" || place_type === "plot" || place_type === "isolated_dwelling") {
-                zoom = 17;
+            
+    
+            
+                if (val.boundingbox[2] < 0) {
+                    val.boundingbox[2] = - val.boundingbox[2];
+                    } 
+                else {
+                    val.boundingbox[2] =  val.boundingbox[2];
+                    }
+                if (val.boundingbox[3] < 0) {
+                    val.boundingbox[3] = - val.boundingbox[3];
+                    } 
+                else {
+                    val.boundingbox[3] =  val.boundingbox[3];
+                    }
+            
+            if (val.boundingbox[2] < val.boundingbox[3]){
+                scroll_test_sum = val.boundingbox[3] - val.boundingbox[2];
             } else {
-                zoom = 12;
+                scroll_test_sum = val.boundingbox[2] - val.boundingbox[3];
             }
 
-            items.push("<li> Welsh name: " + cymraeg + "<br>English name: " + val.display_name + "<br> This is a: " + val.osm_type + "<br><a target=”_blank” href=https://openstreetmap.cymru/?h=" + lat + "&ll=" + lon + "&ch=" + zoom + "> View this on openstreetmap.cymru</a>  </li>");
+            
+            if (scroll_test_sum <= 0.004){
+                 zoom = 18;
+            } else if (scroll_test_sum <= 0.0055){
+                 zoom = 17;
+            } else if (scroll_test_sum <= 0.055){
+                 zoom = 16;
+            } else if (scroll_test_sum <= 0.075){
+                 zoom = 13;
+            } else if (scroll_test_sum <= 0.15){
+                 zoom = 12;
+            } else if (scroll_test_sum <= 0.45){
+                 zoom = 11;
+            } else {
+                 zoom = 10;
+            }
+            
+            
+
+
+            items.push("<li> Welsh name: " + cymraeg + "<br>English name: " + val.display_name + "<br> This is a: " + val.class + "   " + val.type + "<br><a target=”_blank” href=https://openstreetmap.cymru/?h=" + lat + "&ll=" + lon + "&ch=" + zoom + "> View this on openstreetmap.cymru</a>  </li>");
 
         });
 
