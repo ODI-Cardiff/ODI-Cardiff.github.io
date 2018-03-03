@@ -1,21 +1,49 @@
 <html>
 	<head>
-		<title>Simple OSM.CY search</title>
+		<title>Simple openstreetmap.cymru search</title>
 
 		<link rel="stylesheet" type="text/css" href="site.css">
 
 		<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-		<script src="js/jquery-1.8.2.min.js"></script>
+        
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
         
 	</head>
-	<body>
-		<div id="map"></div>
-		<div id="search">
+	<body><div class="container-fluid">
+	<!--	<div id="map"></div> -->
+        
+ <div class="row">
+     <div class=" col-sm-8">
+                <h1>Search Mapio Cymru</h1>
+         
+
+    
+     
+
 			<input type="text" name="addr" value="" id="addr" size="10" />
 			<button id="search_btn" type="button" onclick="addr_search();">Search</button>
-			<div id="results"/>
-		</div>
+            <div id="results"/></div>
+     <div class=" col-sm-4"></div>
+         </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+        <div class="footer navbar-fixed-bottom col-sm-8">This service searches the global OpenStreetMap database.<br /> It returns the English and Welsh names from the database and gives you a link to <a href="https://openstreetmap.cymru">openstreetmap.cymru</a>. <br />
+        If the Welsh name is missing it gives you a link to edit the entry on <a href="https://openstreetmap.org">openstreetmap.org</a><br />
+        <a href="http://cardiff.theodi.org/2018/02/23/mapio-eich-milltir-sgwar/">For more information about editing the map read our blogpost</a>.
+        </div>
+        </div>
+        </div>
+
+
+    
+
 		<script src="js/map.js"></script>
         <script src="js/uxtweaks.js"></script>
-    </body>
+</body>    
 </html>
