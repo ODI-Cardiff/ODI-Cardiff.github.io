@@ -77,7 +77,7 @@ function addr_search() {
             }
             
             if (cymraeg === undefined){
-                editonosm = '<a href="https://www.openstreetmap.org/edit?editor=id#map=17/' + lat + "/" + lon +'"> Edit OpenStreetMap to add the Welsh name</a> (You will need an account)';
+                editonosm = '<a target=”_blank” href="https://www.openstreetmap.org/edit?editor=id#map=17/' + lat + "/" + lon +'"> Edit OpenStreetMap to add the Welsh name</a> (You will need an account)';
                 cymraeg = "The Welsh-specific name is mssing";
             } else {
                 editonosm = "";
