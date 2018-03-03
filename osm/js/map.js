@@ -55,10 +55,29 @@ function addr_search() {
                  zoom = 10;
             }
             
+            if (val.class === "highway"){
+                  fontawesomeclass = "'fas fa-road'";
+            } else if (val.class === "building" || val.class === "amenity"){
+                  fontawesomeclass = "'fas fa-building'";
+            } else if (val.class === "place"){
+                  fontawesomeclass = "'fas fa-map-marker'";
+            } else if (val.class === "boundary"){
+                  fontawesomeclass = "'fas fa-circle-notch'";
+            } else if (val.class === "landuse"){
+                  fontawesomeclass = "'fas fa-expand'";
+            } else if (val.class === "railway"){
+                  fontawesomeclass = "'fas fa-train'";
+            } else if (val.class === "waterway"){
+                  fontawesomeclass = "'fas fa-ship'";
+            } else if (val.class === "natural"){
+                  fontawesomeclass = "'fas fa-leaf'";
+            } else {
+                  fontawesomeclass = "'fas fa-angle-right'";
+            }
             
 
 
-            items.push("<li> Welsh name: " + cymraeg + "<br>English name: " + val.display_name + "<br> This is a: " + val.class + "   " + val.type + "<br><a target=”_blank” href=https://openstreetmap.cymru/?h=" + lat + "&ll=" + lon + "&ch=" + zoom + "> View this on openstreetmap.cymru</a>  </li>");
+            items.push("<li> Welsh name: " + cymraeg + "<br>English name: " + val.display_name + "<br> This is a: " + "<i class=" + fontawesomeclass + "></i>   "+ val.class + "   " + val.type + "<br><a target=”_blank” href=https://openstreetmap.cymru/?h=" + lat + "&ll=" + lon + "&ch=" + zoom + "> View this on openstreetmap.cymru</a>  </li>");
 
         });
 
