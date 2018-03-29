@@ -76,15 +76,15 @@ function addr_search() {
                   fontawesomeclass = "'fas fa-angle-right'";
             }
             
-            if (cymraeg === undefined){
-                editonosm = '<a target=”_blank” href="https://www.openstreetmap.org/edit?editor=id#map=17/' + lat + "/" + lon +'"> Edit OpenStreetMap to add the Welsh name</a> (You will need an account)';
-                cymraeg = "The Welsh-specific name is mssing";
-            } else {
-                editonosm = "";
-            }
+//            if (cymraeg === undefined){
+//                editonosm = '<a target=”_blank” href="https://www.openstreetmap.org/edit?editor=id#map=17/' + lat + "/" + lon +'"> Edit OpenStreetMap to add the Welsh name</a> (You will need an account)';
+//                cymraeg = "The Welsh-specific name is mssing";
+//            } else {
+//                editonosm = "";
+//            }
 
 
-            items.push("<li> Welsh name: " + cymraeg + "<br>English name: " + val.display_name + "<br> This is a: " + "<i class=" + fontawesomeclass + "></i>   "+ val.class + "   " + val.type + "<br><a target=”_blank” href=https://openstreetmap.cymru/?h=" + lat + "&ll=" + lon + "&ch=" + zoom + "> View this on openstreetmap.cymru</a> | " + editonosm +  "</li><br />");
+            items.push("<li> Welsh name: " + cymraeg + "<br>English name: " + val.display_name + "<br> This is a: " + "<i class=" + fontawesomeclass + "></i>   "+ val.class + "   " + val.type + "<br><a target=”_blank” href=https://openstreetmap.cymru/?h=" + lat + "&ll=" + lon + "&ch=" + zoom + "> View this on openstreetmap.cymru</a> | </li><br />");
 
         });
 
