@@ -1,0 +1,503 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Total gross expenditure local authorities in Wales</title>
+ <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    </head>
+
+<body>
+
+<style>
+    
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#container {
+   min-height:100%;
+   position:relative;
+}
+#header {
+   padding:10px;
+}
+
+   
+#footer {
+   position:right;
+   bottom:0;
+   width:20%%;
+   height:60px;   /* Height of the footer */
+  }
+    body {
+        font-family: sans-serif;
+        text-align: center;
+    }
+    #footer-box {
+        display:inline-block;
+        width: 80%;
+    }    
+    #hexagonMapHolder {
+        font-size: 0.8em;
+        display: inline-block;
+        text-align: center;
+        width: 80%;
+ 
+        vertical-align: top;
+        padding-top: 1em;
+        padding:10px;
+   padding-bottom:120px;   /* Height of the footer */
+}
+    }
+    
+    select {
+        margin: 1em auto 2em auto;
+    }
+    
+    .hex {
+        float: left;
+        margin-left: 3px;
+        margin-bottom: -26px;
+    }
+    
+    .hex .top {
+        width: 0;
+        border-bottom: 30px solid lightgray;
+        border-left: 52px solid transparent;
+        border-right: 52px solid transparent;
+        transition: all 1s;
+    }
+    
+    .hex .middle {
+        width: 104px;
+        height: 60px;
+        background: lightgray;
+        transition: all 1s;
+    }
+    
+    .hex .bottom {
+        width: 0;
+        border-top: 30px solid lightgray;
+        border-left: 52px solid transparent;
+        border-right: 52px solid transparent;
+        transition: all 1s;
+    }
+    
+    .hex-row {
+        clear: left;
+    }
+    
+    .hex-row.even {
+        margin-left: 53px;
+    }
+    
+    .hex .middleBlank {
+        width: 104px;
+        height: 60px;
+        background: transparent;
+    }
+    
+    .hex .topBlank {
+        width: 0;
+        border-bottom: 30px solid transparent;
+        border-left: 52px solid transparent;
+        border-right: 52px solid transparent;
+    }
+    
+    .hex .bottomBlank {
+        width: 0;
+        border-top: 30px solid transparent;
+        border-left: 52px solid transparent;
+        border-right: 52px solid transparent;
+    }
+    
+    .wardName {
+        padding: 2px;
+    }
+    
+    .wardValue {
+        padding: 2px;
+        font-size: 1.3em;
+    }
+    
+    #LEEDS {
+        font-weight: bold;
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+    }
+</style>
+
+
+<body onload="update()">
+    <div id="container">
+    <div id="header">
+    <h1>Total Gross Expenditure (provision of services)</h1>
+    <p>£millions</p>
+    <div>
+        <label for="size">Which year would you like to view?</label>
+
+        <select id="size" onchange="update()">
+             <option id="one">2008/9</option>
+            <option id="two">2009/10</option>
+            <option id="three">2010/11</option>
+            <option id="four">2011/12</option>
+            <option id="five">2012/13</option>
+            <option id="six">2013/14</option>
+            <option id="seven">2014/15</option>
+            <option id="eight">2015/16</option>
+         </select>
+
+
+
+    </div>
+        </div>
+        
+    <div id="hexagonMapHolder">
+<div id="hexagonMap">
+          <div class="hex-row even">  
+                <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+          <div id="Ynys_Mon" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Ynys Mon - Anglesey</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                </div>
+<div class="hex-row">
+
+                  <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                    <div id="Gwynedd" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Gwynedd</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                    <div id="Conwy" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Conwy</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                    <div id="Sir_y_Ddinbych" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Sir y Ddinbych - Denbighshire</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                        <div id="Sir_y_Fflint" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Sir y Fflint - Flintshire</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+    </div>
+    <div class="hex-row even">
+   
+                   <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+               <div id="Ceredigion" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Ceredigion</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                           <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+ 
+            
+                
+                                 <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                <div id="Wrecsam" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Wrecsam - Wrexham</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+        </div>
+ 
+        <div class="hex-row">
+              <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+
+                <div id="Sir_Penfro" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Sir Penfro - Pembrokeshire</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Sir_Gaerfyrddin" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Sir Gaerfyrddin - Carmarthenshire</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                          <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                          <div id="Powys" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Powys</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+
+                           
+            </div>
+            <div class="hex-row even">
+                   <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+     <div id="Abertawe" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Abertawe - Swansea</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div id="Castell_nedd_Port_Talbot" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Castell-nedd Port Talbot - Neath Port Talbot</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+     <div id="Rhondda_Cynon_Taf" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Rhondda Cynon Taf</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                
+
+                <div id="Merthyr_Tudful" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Merthyr Tudful - Merthyr Tydfil</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+
+                <div id="Blaenau_Gwent" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Blaenau Gwent</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+            </div>
+            <div class="hex-row">
+
+               
+
+                     <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                                 <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                <div id="Pen_y_bont_ar_Ogwr" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Pen-y-bont ar Ogwr - Bridgend</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                 <div id="Caerffili" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Caerffili - Caerphilly</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+  
+
+                </div>
+                <div id="Torfaen" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Torfaen</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                               <div id="Sir_Fynwy" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Sir Fynwy - Monmouthshire</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                 </div>
+    <div class="hex-row even">
+                     <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                                 <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                                         <div class="hex">
+                    <div class="topBlank"></div>
+                    <div class="middleBlank"></div>
+                    <div class="bottomBlank"></div>
+                </div>
+                <div id="Bro_Morgannwg" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Bro Morgannwg - Vale of Glamorgan</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                 <div id="Caerdydd" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Caerdydd - Cardiff</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+  
+
+                </div>
+                <div id="Dinas_Casnewydd" class="ward hex">
+                    <div class="top"></div>
+                    <div class="middle">
+                        <div class="wardName">Dinas Casnewydd - Newport</div>
+                        <div class="wardValue"></div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+
+
+                 </div>
+    </div>
+                  
+  
+
+
+        </div>
+    
+    
+    
+    <div id="footer"><img align="left" src="https://ODI-Cardiff.github.io/20140513node-300-S-K lb sm.png">A project from <a href="http://cardiff.theodi.org">ODI-Cardiff</a>. <a href="https://goodpracticeexchange.wales/2017/06/20/releasing-open-data/">Data published by Wales Audit Office under the Open Government Licence</a>. Based on <a href="https://github.com/thomasforth/leedssimplifiedwardmap">code published by Thomas Forth from ODI-Leeds</a>. </div>
+</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+        </body>
+
+
+<script>
+    var wardArray = ['Abertawe','Blaenau_Gwent','Bro_Morgannwg','Caerdydd','Caerffili','Castell_nedd_Port_Talbot','Ceredigion','Conwy','Dinas_Casnewydd','Gwynedd','Merthyr_Tudful','Pen_y_bont_ar_Ogwr','Powys','Rhondda_Cynon_Taf','Sir_Fynwy','Sir_Gaerfyrddin','Sir_Penfro','Sir_y_Ddinbych','Sir_y_Fflint','Torfaen','Wrecsam','Ynys_Mon'];
+
+    var nineyear = [229.44,354.624,548.65,1375.509,488.745,194.733,444.136,299.559,384.152,335.693,228.956,180.457,277.766,408.366,951.84,328.362,405.413,659.021,661.525,255.092,344.08,332.491];
+    var tenyear = [229.56,428.133,521.393,969.53,517.254,211.002,318.663,318.102,571.526,349.661,190.466,200.605,226.903,386.832,480.835,376.978,386.844,632.124,668.552,263.906,339.932,393.177];
+    var elevenyear = [248.078,389.016,506.981,1111.266,567.853,179.592,299.569,291.417,364.928,749.773,172.222,149.578,231.222,346.266,384.39,362.856,345.669,615.597,620.077,246.433,279.068,340.821];
+    var twelveyear = [243.157,382.198,589.505,1023.437,544.185,203.045,312.111,331.742,436.209,331.88,198.008,178.52,225.395,447.145,365.587,351.373,397.064,684.771,736.571,293.051,346.346,373.962];
+    var thirteenyear = [242.747,388.238,530.272,1026.237,554.1,206.147,312.379,335.461,418.113,346.74,193.217,187.833,234.269,429.204,416.072,352.721,409.708,722.565,741.988,279.983,333.318,385.977];
+    var fourteenyear = [240.238,403.707,560.658,1183.94,584.608,212.976,316.91,324.729,427.567,354.44,203.397,183.075,235.377,437.202,380.28,369.877,408.213,710.857,700.256,290.935,352.276,379.425];
+    var fifteenyear = [224.324,466.02,521.86,1049.558,616.962,211.554,318.184,316.722,419.057,349.552,201.436,175.444,231.667,427.748,380.333,370.62,369.453,686.3,761.35,285.952,351.015,378.163];
+    var sixteenyear = [249.633,384.732,616.804,1341.43,760.611,213.247,317.854,363.793,534.175,341.252,218.315,176.797,216.783,426.739,399.92,525.036,441.743,704.197,802.293,280.397,383.201,511.994];
+
+
+
+
+    var bedsArray = [nineyear, tenyear, elevenyear, twelveyear, thirteenyear, fourteenyear, fifteenyear, sixteenyear];
+
+    function update() {
+        var sizeIndex = size.selectedIndex;
+        var resultsArray = bedsArray[sizeIndex];
+        var largestvalue = 600
+        var thisvalue = 1
+       
+    for (var n = 0; n < wardArray.length; n++) 
+    {
+         thisvalue = resultsArray[n];
+            if (thisvalue > largestvalue){
+                largestvalue = thisvalue
+            }
+        }
+        
+
+        for (var n = 0; n < wardArray.length; n++) {
+            var wardname = wardArray[n];
+            var colorShade = resultsArray[n] / largestvalue;
+            document.getElementById(wardname).children[0].style.borderBottom = "30px solid rgba(255,103,0, " + colorShade + ")";
+            document.getElementById(wardname).children[1].style.background = "rgba(255,103,0, " + colorShade + ")";
+            document.getElementById(wardname).children[2].style.borderTop = "30px solid rgba(255,103,0, " + colorShade + ")";
+            document.getElementById(wardname).children[1].children[1].innerHTML = resultsArray[n] + " ";
+        }
+    }
+
+</script>
+
+    
+
+</html>
